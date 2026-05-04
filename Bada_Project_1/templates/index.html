@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Tool</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: #020617;
+            padding: 25px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            background: #22c55e;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+
+        .download-btn {
+            background: #3b82f6;
+            margin-top: 10px;
+        }
+
+        .download-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🚀 AI Multi Tool</h1>
+
+<form method="POST">
+
+<select name="choice">
+    <option value="1">Proposal</option>
+    <option value="2">YouTube Script</option>
+    <option value="3">Resume</option>
+</select>
+
+<textarea name="content" placeholder="Type your content..."></textarea>
+
+<button type="submit">Generate</button>
+
+</form>
+
+{% if result %}
+<div class="output">
+    {{ result }}
+</div>
+
+<form method="POST" action="/download">
+    <input type="hidden" name="content" value="{{ result }}">
+    <button type="submit" class="download-btn">Download</button>
+</form>
+{% endif %}
+
+</div>
+
+</body>
+</html>
